@@ -1,0 +1,65 @@
+<%/*  
+    cedula_cliente : double,
+    direccion_cliente : String,
+    email_cliente : String,
+    nombre_cliente : String, 
+    telefono_cliente : double   
+
+*/%>
+
+<%- include('./template/cabecera', {titulow: "Clientes" }); %>
+    <br></br>
+    <h1 align="center" class="text-muted">Lista de Clientes</h1>
+    <br></br>
+    <div class="container">
+        <a class="btn btn-success btn-block my-4" href="/clientes/crear">Crear Cliente</a>
+        <br><br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#Id</th>
+                    <th scope="col">Cedula</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">email</th>
+                    <th scope="col">Celular</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% if (arrayClientes.length> 0) { %>
+                    <% arrayClientes.forEach(cliente=> {%>
+                        <tr>
+                            <th scope="row">
+                                <%= cliente.id %>
+                            </th>
+                            <td>
+                                <%= cliente.cedula_cliente %>
+                            </td>
+                            <td>
+                                <%= cliente.nombre_cliente %>
+                            </td>
+                            <td>
+                                <%= cliente.direccion_cliente %>
+                            </td>
+                            <td>
+                                <%= cliente.email_cliente %>
+                            </td>
+                            <td>
+                                <%= cliente.telefono_cliente %>
+                            </td>
+                            <td><a href="/clientes/<%= cliente.id%>" class="btn btn-warning btn-sm"> Editar</a>
+                            </td>
+                        </tr>
+
+                        <% }) %>
+                            <% } %>
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+    <%- include('./template/footer'); %>

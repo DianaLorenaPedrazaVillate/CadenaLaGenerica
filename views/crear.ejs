@@ -1,0 +1,17 @@
+<%- include('./template/cabecera', {titulow: "Crear Cliente"}); %>
+
+    <h1 align="center">Crear Cliente</h1>
+    <div class="container">
+        <form action="/clientes" method="post">
+            <input type="text" placeholder="Cedula Cliente" class="form-control my-2" name="cedula_cliente">
+            <input type="text" placeholder="Nombre Cliente" class="form-control my-2" name="nombre_cliente">
+            <input type="text" placeholder="Direccion Cliente" class="form-control"Cliente" class="form-control my-2" name="direccion_cliente">
+            <input type="text" placeholder="email Cliente" class="form-control my-2" name="email_cliente">
+            <input type="text" placeholder="Celular Cliente" class="form-control my-2" name="telefono_cliente">
+            <button class="btn btn-success btn-block" type="submit">
+                Agregar Cliente
+            </button>
+        </form>
+    </div>
+ 
+    <%- include('./template/footer'); %>

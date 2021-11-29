@@ -1,0 +1,55 @@
+<%- include('./template/cabecera', {titulow:'Detalle Cliente'}); %>
+
+    <h1 align="center">Detalle Clientes</h1>
+
+    <div class="container">
+        <% if (error) { %>
+            <p>
+                <%= mensaje %>
+            </p>
+            <a href="/clientes" class="btn btn-dark btn-block">Volver a Clientes</a>
+            <% } %>
+
+                <% if (!error) { %>
+
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#Id</th>
+                                <th scope="col">Cedula</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Direccion</th>
+                                <th scope="col">email</th>
+                                <th scope="col">Celular</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">
+                                    <%= cliente.id%>
+                                </th>
+                                <td>
+                                    <%= cliente.cedula_cliente %>
+                                </td>
+                                <td>
+                                    <%= cliente.nombre_cliente %>
+                                </td>
+                                <td>
+                                    <%= cliente.direccion_cliente %>
+                                </td>
+                                <td>
+                                    <%= cliente.email_cliente %>
+                                </td>
+                                <td>
+                                    <%= cliente.telefono_cliente %>
+                                </td>
+                                <td>@mdo </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <% } %>
+    </div>
+
+    <%- include('./template/footer'); %>
