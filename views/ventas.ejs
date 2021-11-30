@@ -1,9 +1,13 @@
 <%- include('./template/cabecera', {titulow: "Ventas" }); %>
 
     <br><br>
-    <h1 align="center" class="text-muted"><%= titulo%></h1>
+    <h1 align="center" class="text-muted fw-bold fst-italic">
+        <%= titulo%>
+    </h1>
     <br><br>
     <div class="container">
+        <a class="btn btn-success btn-block my-4" href="/ventas/crearVenta">Crear Venta</a>
+        <br><br>
         <table class="table">
 
             <thead>
@@ -19,32 +23,58 @@
             </thead>
 
             <tbody>
-                <%/* aqui se debe direccionar a la BD de mongo para iterar y traer los datos de los 
-                productos. Se deja el ejemplo de clientes.ejs para ser modificado cuando veamos la conexion a Mongo*/%>
+                <!-- <% /* aqui se debe direccionar a la BD de mongo para iterar y traer los datos de los productos. Se deja
+                    el ejemplo de clientes.ejs para ser modificado cuando veamos la conexion a Mongo*/%>
+                    <tr>
+                        <th scope="row">
+                            <%= 123456 %>
+                                <% /* se debe direccionar al dato codigo_producto como el ejemplo clientes*/ %>
+                        </th>
+                        <td>
+                            <%= 1 %>
+                        </td>
+                        <td>@mdo
+                            <%= "link para ver detalle" %>
+                        </td>
+                        <td>
+                            <%= 10000 %>
+                        </td>
+                        <td>
+                            <%= 1900 %>
+                        </td>
+                        <td>
+                            <%= 11900 %>
+                        </td>
+                        <td>@mdo</td>
+                    </tr> -->
+                    
+                    <% if (arrayVentas.length> 0) { %>
+                        <% arrayVentas.forEach(venta=> {%>
+                            <tr>
+                                <th scope="row">
+                                    <%= venta.id %>
+                                </th>
+                                <td>
+                                    <%= venta.codigo_venta %>
+                                </td>
+                                <td>
+                                    <%= venta.detalle_venta %>
+                                </td>
+                                <td>
+                                    <%= venta.valor_venta %>
+                                </td>
+                                <td>
+                                    <%= venta.iva_venta %>
+                                </td>
+                                <td>
+                                    <%= venta.total_venta %>
+                                </td>
 
-                
-                        <tr>
-                            <th scope="row">
-                                <%= 123456 %> <%/* se debe direccionar al dato codigo_producto como el ejemplo clientes*/  %> 
-                            </th>
-                            <td>
-                                <%= 1 %> 
-                            </td>
-                            <td>@mdo
-                                <%= "link para ver detalle" %></td>
-                            <td>
-                                <%= 10000 %> 
-                            </td>
-                            <td>
-                                <%= 1900 %> 
-                            </td>
-                            <td>
-                                <%= 11900 %>    
-                            </td>
-                            <td>@mdo</td>
-                        </tr>
+                            </tr>
 
-                        
+                            <% }) %>
+                                <% } %>
+
             </tbody>
         </table>
     </div>

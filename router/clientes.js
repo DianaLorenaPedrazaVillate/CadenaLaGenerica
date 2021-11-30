@@ -3,7 +3,6 @@ const router =express.Router();
 
 const Cliente = require('../models/cliente');
 
-
 router.get('/', async (req, res) => {
     try {
         const arrayClientesDB = await Cliente.find();
@@ -57,8 +56,6 @@ router.get('/:id', async (req, res)=>{
     )}
 })
 
-
-
 /*
 //Aqui vamos a constuir un archivo de objetos cliente como ejemplo cuando aun no tenemos conectada la BD
 router.get('/',(req, res) => {
@@ -73,4 +70,25 @@ router.get('/',(req, res) => {
 
 });
 */
+
+//ruta para editar
+router.put('/:id', async (req, res) => {
+    const id = req.params.id
+    const body = req.body
+    try{
+        const clienteDB = await cliente.findByIdAndUpdate(
+            id, body, {useFindAndModify: false})
+            console.log(clienteDB)
+            res.json({
+                estado : true,
+                mensaje : 'Cliente editado'
+            })
+    }catch(error){
+        console.log(error)
+        res.json({
+            estado : true,
+            mensaje : 'Fallo al editar'
+        })
+    }
+})
 module.exports = router;

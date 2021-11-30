@@ -7,49 +7,71 @@
             <p>
                 <%= mensaje %>
             </p>
-            <a href="/clientes" class="btn btn-dark btn-block">Volver a Clientes</a>
+           
             <% } %>
-
+            <br>
+            <a href="/clientes" class="btn btn-dark btn-block">Volver a Clientes</a>
+            
                 <% if (!error) { %>
+                    <form id="formularioEditar" data-id="<%= cliente.id %>">
+                        <input type="text" class="form-control my-2" name="cedula_cliente" value="<%= cliente.cedula_cliente %>" id="cedulaInput" required>
+                        <input type="text" class="form-control my-2" name="nombre_cliente" value="<%= cliente.nombre_cliente %>" id="nombreInput" required>
+                        <input type="text" class="form-control my-2" name="direccion_cliente" value="<%= cliente.direccion_cliente %>" id="direccionInput" required>
+                        <input type="text" class="form-control my-2" name="email_cliente" value="<%= cliente.email_cliente %>" id="emailInput" required>
+                        <input type="text" class="form-control my-2" name="telefono_cliente" value="<%= cliente.telefono_cliente %>" id="telefonoInput" required>
+                        <br>
+                        <button type="submit" class="btn btn-warning" id="formularioEditar">Editar Cliente</button>
+                    </form>
+                    <hr>
+                    <button class="btn btn-danger btn-sm" id='btnEliminar'>
+                         Borrar Cliente               
+                    </button>
 
-
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#Id</th>
-                                <th scope="col">Cedula</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Direccion</th>
-                                <th scope="col">email</th>
-                                <th scope="col">Celular</th>
-                                <th scope="col">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">
-                                    <%= cliente.id%>
-                                </th>
-                                <td>
-                                    <%= cliente.cedula_cliente %>
-                                </td>
-                                <td>
-                                    <%= cliente.nombre_cliente %>
-                                </td>
-                                <td>
-                                    <%= cliente.direccion_cliente %>
-                                </td>
-                                <td>
-                                    <%= cliente.email_cliente %>
-                                </td>
-                                <td>
-                                    <%= cliente.telefono_cliente %>
-                                </td>
-                                <td>@mdo </td>
-                            </tr>
-                        </tbody>
-                    </table>
                     <% } %>
     </div>
 
     <%- include('./template/footer'); %>
+    <script>
+        //aqui capturamos lo que trae el boton para eliminar
+        const btnEliminar = document.querySelector('btnEliminar')
+        btnEliminar.addEventListener('click', async()=>{
+            console.log('haz dado un clic en eliminar')
+            const id = btnEliminar.dataset.id
+            console.log('id'. id)
+            try {
+                const data = await fetch(`/clientes/${id}`,{
+                    method : 'delete'
+                })
+                const res = await data.json()
+                if(res.estado){
+                    window.location.href = '/clientes'
+                }else{
+                    console.log(res)
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        })
+
+
+
+        //codigo para editar
+        const formularioEditar = document-addEventListener("#formularioEditar")
+        formularioEditar.addEventListener('submit', async(e) =>{
+            e.preventDefault()
+            console.log('Submint editar')
+            const cedula = formularioEditar.elements['cedula'].value
+            const nombre = document.querySelector('#nombreInput').value
+            const direccion = document.querySelector('#direccionInput').value
+            const email = document.querySelector('#emailInput').value
+            const telefono = document.querySelector('#telefonoInput').value
+            const id = formularioEditar.dataselt-id
+            console.log(cedula, nombre, direccion, email, telefono,id)
+
+            try {
+                const data = await fetch()
+            } catch (error) {
+                
+            }
+        })
+    </script>

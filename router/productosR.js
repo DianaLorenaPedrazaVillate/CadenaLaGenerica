@@ -7,8 +7,8 @@ router.get('/', async (req, res) => {
     try {
         const arrayDB = await Producto.find();
         console.log(arrayDB)
-        res.render('productos.ejs',{
-            arrayDBloc: arrayDB
+        res.render('productos',{
+            arrayProductos: arrayDB
         })
 
     }

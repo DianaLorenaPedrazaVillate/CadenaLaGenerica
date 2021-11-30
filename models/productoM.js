@@ -14,4 +14,5 @@ const productoSchema = new Schema({
 
 //Creacion modelo de la base de datos
 const Producto = mongoose.model('Producto',productoSchema);
+
 module.exports = Producto;

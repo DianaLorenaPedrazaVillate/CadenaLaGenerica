@@ -1,15 +1,6 @@
-<%/*  
-    cedula_cliente : double,
-    direccion_cliente : String,
-    email_cliente : String,
-    nombre_cliente : String, 
-    telefono_cliente : double   
-
-*/%>
-
 <%- include('./template/cabecera', {titulow: "Clientes" }); %>
     <br></br>
-    <h1 align="center" class="text-muted">Lista de Clientes</h1>
+    <h1 align="center" class="text-muted fw-bold fst-italic">Lista de Clientes</h1>
     <br></br>
     <div class="container">
         <a class="btn btn-success btn-block my-4" href="/clientes/crear">Crear Cliente</a>
@@ -28,7 +19,7 @@
             </thead>
 
             <tbody>
-                <% if (arrayClientes.length> 0) { %>
+                <% if (arrayClientes.length > 0) {   %>
                     <% arrayClientes.forEach(cliente=> {%>
                         <tr>
                             <th scope="row">
@@ -49,7 +40,7 @@
                             <td>
                                 <%= cliente.telefono_cliente %>
                             </td>
-                            <td><a href="/clientes/<%= cliente.id%>" class="btn btn-warning btn-sm"> Editar</a>
+                            <td><a href="/clientes/<%= cliente.id%>" class="btn btn-warning btn-sm">Editar</a>
                             </td>
                         </tr>
 

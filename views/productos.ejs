@@ -1,35 +1,83 @@
-<% /* NOMBRE DEL DATO TIPO DE DATO LONGITUD código_producto BIGINT 20 nombre_producto VARCHAR 50 nitproveedor BIGINT 20
-    precio_compra DOUBLE ivacompra DOUBLE precio_venta DOUBLE */%>
-    <%- include('./template/cabecera', {titulow: "Productos" }); %>
+<%- include('./template/cabecera', {titulow: "Productos" }); %>
 
+    <br><br>
+    <h1 align="center" class="text-muted fw-bold fst-italic">Lista de Productos</h1>
+    <br><br>
+    <div class="container">
+        <a class="btn btn-primary" href="/productos/crearProducto">Agregar Un Producto</a>
+        <!--<button type="button" class="btn btn-outline-success">Agregar Lista de Producto</button>-->
         <br><br>
-        <h1 align="center" class="text-muted">Lista de Productos</h1>
-        <br><br>
-        <div class="container">
-            <a class="btn btn-primary" href="/productos/crearProducto">Agregar Un Producto</a>
-            <button type="button" class="btn btn-outline-success">Agregar Lista de Producto</button>
-            <br><br>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#Id</th>
-                        <th scope="col">Código del Producto</th>
-                        <th scope="col">Producto</th>
-                        <th scope="col">NIT Proveedor</th>
-                        <th scope="col">Precio de Compra</th>
-                        <th scope="col">IVA del producto</th>
-                        <th scope="col">Precio de Venta</th>
-                        <th scope="col">Acciones</th>
-                    </tr>
-                </thead>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#Id</th>
+                    <th scope="col">Código del Producto</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">NIT Proveedor</th>
+                    <th scope="col">Precio de Compra</th>
+                    <th scope="col">IVA del producto</th>
+                    <th scope="col">Precio de Venta</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
 
-                <tbody>
-                    <%/*
-                    en esta parte va el codigo del archivo plano productos_datos.txt
-                    */%>
-                </tbody>
-            </table>
-        </div>
+            <tbody>
+
+                <div class="card bg-transparent col-12 border-0">
+                    <div class="mb-3">
+                        <!-- Cargar archivo -->
+                        <form method="post" name="formulario"
+                            enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-11">
+                                    <input type="file"
+                                        name="archivo" class="form-control" id="archivo">
+                                </div>
+                                <div class="col-1">
+                                    <input type="submit" value="Procesar" name="Procesar" onclick="cargarArchivo(archivo)" class="btn btn-success aling-center">
+                                </div>
+                            </div>
+                            <input type="hidden" name="nombre" value="">
+                            <input type="hidden" name="nombre2" value="">
+                        </form>
+                    </div>
+                </div>
+                <div class="container-fluid">
+
+                <% if (arrayProductos.length > 0) { console.log('entra')%>
+                    <% arrayProductos.forEach(producto=> {%>
+                        <tr>
+                            <th scope="row">
+                                <%= producto.id %>
+                            </th>
+                            <td>
+                                <%= producto.codigo_producto %>
+                            </td>
+                            <td>
+                                <%= producto.nombre_producto %>
+                            </td>
+                            <td>
+                                <%= producto.nitproveedor %>
+                            </td>
+                            <td>
+                                <%= producto.precio_compra %>
+                            </td>
+                            <td>
+                                <%= producto.ivacompra %>
+                            </td>
+                            <td>
+                                <%= producto.precio_venta %>
+                            </td>
+                            <td><a href="/productos/<%= producto.id %>" class="btn btn-warning btn-sm">Editar</a>
+                            </td>
+                        </tr>
+
+                        <% }) %>
+
+                            <% } %>
+            </tbody>
+        </table>
+    </div>
 
 
-<%- include('./template/footer'); %>
+    <%- include('./template/footer'); %>
