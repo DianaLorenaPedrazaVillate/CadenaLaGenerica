@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%- include('./template/cabecera', {titulow: "Clientes" }); %>
     <br></br>
     <h1 align="center" class="text-muted fw-bold fst-italic">Lista de Clientes</h1>
@@ -9,6 +10,28 @@
             <thead>
                 <tr>
                     <th scope="col">#Id</th>
+=======
+<%/*  
+    cedula_cliente : double,
+    direccion_cliente : String,
+    email_cliente : String,
+    nombre_cliente : String, 
+    telefono_cliente : double   
+
+*/%>
+
+<%- include('./template/cabecera', {titulow: "Clientes" }); %>
+    <br></br>
+    <h1 align="center" class="text-muted">Lista de Clientes</h1>
+    <br>
+    <div class="container">
+        <a class="btn btn-outline-success" href="/clientes/crear">Crear Cliente</a>
+        <br><br>
+        <table class="table table-hover shadow" style="border-collapse: separate;">
+            <thead>
+                <tr align="center" class="table-active">
+                    
+>>>>>>> 8d231af (archivos con front)
                     <th scope="col">Cedula</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Direccion</th>
@@ -19,12 +42,19 @@
             </thead>
 
             <tbody>
+<<<<<<< HEAD
                 <% if (arrayClientes.length > 0) {   %>
                     <% arrayClientes.forEach(cliente=> {%>
                         <tr>
                             <th scope="row">
                                 <%= cliente.id %>
                             </th>
+=======
+                <% if (arrayDBloc.length> 0) { %>
+                    <% arrayDBloc.forEach(cliente=> {%>
+                        <tr align="center">
+                            
+>>>>>>> 8d231af (archivos con front)
                             <td>
                                 <%= cliente.cedula_cliente %>
                             </td>
@@ -40,17 +70,55 @@
                             <td>
                                 <%= cliente.telefono_cliente %>
                             </td>
+<<<<<<< HEAD
                             <td><a href="/clientes/<%= cliente.id%>" class="btn btn-warning btn-sm">Editar</a>
                             </td>
                         </tr>
 
                         <% }) %>
                             <% } %>
+=======
+                            <td>
+                                <button type="button" title="Editar / Eliminar" class="btn btn-outline-warning"><a href="/clientes/<%= cliente.id%>" style="color: #fa9847;"><i class="fas fa-user-edit"></i></a></button>
+                            </td>
+                            
+                            
+                        </tr>
+
+                        <% }) %>
+                    <% } %>
+>>>>>>> 8d231af (archivos con front)
             </tbody>
         </table>
     </div>
 
+<<<<<<< HEAD
 
+=======
+    <script>
+        //Aqui se captrua lo que trae el botón eliminar a traves del id="btnEliminar"
+        const btnEliminar = document.querySelector('#btnEliminar')
+        btnEliminar.addEventListener('click', async () => {
+            console.log('Haz dado un click')
+            const id = btnEliminar.dataset.id //Aquí estamos capturando el parametro que estamos pasando a treaves de un atributo en el botón eliminar
+            console.log('id', id)//Aquí nos pinta en consola de navegador el valor del id
+            try {
+                const data = await fetch(`/clientes/${id}`, {
+                    method: 'delete'
+                })
+                const res = await data.json()
+                //console.log(res)
+                if (res.estado) {
+                    window.location.href = '/clientes'
+                } else {
+                    console.log(res)
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        })
+        </script>
+>>>>>>> 8d231af (archivos con front)
 
 
     <%- include('./template/footer'); %>

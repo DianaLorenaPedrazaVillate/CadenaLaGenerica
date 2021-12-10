@@ -1,12 +1,22 @@
 <%- include('./template/cabecera', {titulow:'Detalle Cliente'}); %>
 
+<<<<<<< HEAD
     <h1 align="center">Detalle Clientes</h1>
 
     <div class="container">
+=======
+    <br>
+    <h1 align="center">Editar Clientes</h1>
+    <br>
+
+    <div class="container" style="width: 600px;">
+
+>>>>>>> 8d231af (archivos con front)
         <% if (error) { %>
             <p>
                 <%= mensaje %>
             </p>
+<<<<<<< HEAD
            
             <% } %>
             <br>
@@ -75,3 +85,109 @@
             }
         })
     </script>
+=======
+            <a href="/clientes" class="btn btn-dark btn-block">Volver a Clientes</a>
+            <% } %>
+
+                <% if (!error) { %>
+                    <form id="formularioEditar" data-id="<%= cliente.id  %>" >
+                        <div class="form-floating mt-3 mb-3">
+                            <input type="text" class="form-control" id="cedulaInput" placeholder="Cedula Cliente"
+                                name="cedula" value="<%= cliente.cedula_cliente %> " required>
+                            <label for="cedulaInput">Cedula Cliente</label>
+                        </div>
+                        <div class="form-floating mt-3 mb-3">
+                            <input type="text" class="form-control" id="nombreInput" placeholder="Nombre Cliente"
+                                name="nombre" value="<%= cliente.nombre_cliente %> " required>
+                            <label for="nombreInput">Nombre Cliente</label>
+                        </div>
+                        <div class="form-floating mt-3 mb-3">
+                            <input type="text" class="form-control" id="direccionInput" placeholder="Dirección Cliente"
+                                name="direccion" value="<%= cliente.direccion_cliente %> " required>
+                            <label for="direccionInput">Dirección Cliente</label>
+                        </div>
+                        <div class="form-floating mt-3 mb-3">
+                            <input type="text" class="form-control" id="emailInput" placeholder="Correo Cliente"
+                                name="correo" value="<%= cliente.email_cliente %> " required>
+                            <label for="emailInput">Correo Cliente</label>
+                        </div>
+                        <div class="form-floating mt-3 mb-3">
+                            <input type="text" class="form-control" id="celInput" placeholder="Celular Cliente"
+                                name="telefono" value="<%= cliente.telefono_cliente %> " required>
+                            <label for="celInput">Celular Cliente</label>
+                        </div>
+                        <div>
+                            <button type="submit" title="Actualizar Cliente" class="btn btn-outline-success btn-block">Actualizar <i class="fas fa-user-check"></i></button>
+                        </div>
+                    </form>
+                    <hr style="color: red; height:3px;">
+                    <div align="center">
+                        <a href="/clientes" class="btn btn-dark btn-block">Volver a Clientes</a>
+                        <button type="submit" title="Eliminar Cliente" class="btn btn-outline-danger btn-block" id="btnEliminar" data-id="<%= cliente.id  %>">Eliminar <i class="fas fa-trash"></i></button>
+                       <!--  <button class="btn btn-danger btn-block" id="btnEliminar" data-id="<%= //cliente.id  %>">Eliminar</button> -->
+                    </div>
+                                
+                    
+
+                    <% } %>
+
+    </div>
+
+    <%- include('./template/footer'); %>
+        
+        <script>
+            //Aqui se captrua lo que trae el botón eliminar a traves del id="btnEliminar"
+            const btnEliminar = document.querySelector('#btnEliminar')
+            btnEliminar.addEventListener('click', async () => {
+                console.log('Haz dado un click')
+                const id = btnEliminar.dataset.id //Aquí estamos capturando el parametro que estamos pasando a treaves de un atributo en el botón eliminar
+                console.log('id', id)//Aquí nos pinta en consola de navegador el valor del id
+                try {
+                    const data = await fetch(`/clientes/${id}`, {
+                        method: 'delete'
+                    })
+                    const res = await data.json()
+                    //console.log(res)
+                    if (res.estado) {
+                        window.location.href = '/clientes'
+                    } else {
+                        console.log(res)
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+            })
+            //  Código de Editar   
+            const formularioEditar = document.querySelector('#formularioEditar')            
+            formularioEditar.addEventListener('submit', async(e)=>{
+                e.preventDefault()
+                //console.log('ya dio submit')
+                const cedula_cliente = formularioEditar.elements['cedula'].value
+                const direccion_cliente = formularioEditar.elements['direccion'].value
+                const email_cliente = formularioEditar.elements['correo'].value
+                const telefono_cliente = formularioEditar.elements['telefono'].value
+                const nombre_cliente = formularioEditar.elements['nombre'].value
+                const id =formularioEditar.dataset.id
+                //console.log(cedula,direccion,correo,telefono,nombre,id)
+                //console.log("Aqui vamos bien")
+                try {
+                    const data = await fetch(`/clientes/${id}`, {
+                        method :'put',
+                        headers : {
+                            'Content-Type' : 'application/json'
+                        },
+                        body : JSON.stringify({cedula_cliente, direccion_cliente, email_cliente, telefono_cliente, nombre_cliente})
+                    })
+                    const res = await data.json()
+                    if (res.estado) {
+                        window.location.href = '/clientes'
+                    } else {
+                        console.log(res)
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+            })
+        </script>
+
+>>>>>>> 8d231af (archivos con front)

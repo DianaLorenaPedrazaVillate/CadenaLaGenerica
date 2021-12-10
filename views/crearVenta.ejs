@@ -1,5 +1,6 @@
 <%- include('./template/cabecera', {titulow: "Crear Venta"}); %>
 
+<<<<<<< HEAD
 <h1 align="center">Crear Venta</h1>
 <div class="container">
     <form action="/ventas" method="post">
@@ -19,6 +20,46 @@
 
 
         <button class="btn btn-success btn-block" type="submit">
+=======
+<div class="text-success mt-4 mb-4" style="font-family: new times roman; font-variant: small-caps;">
+    <h1 align="center">Crear Venta</h1>
+</div>
+
+<div class="container form-group" style="max-width: 40rem;">
+    <form action="/ventas" method="post">
+
+        <div class="form-floating mt-3 mb-3">
+            <input type="text" class="form-control" id="cedulaInput" placeholder="Cedula Cliente"
+                name="cedula_cliente" required>
+            <label for="cedulaInput">Cedula Cliente</label>
+        </div>
+
+        <div class="form-floating mt-3 mb-3">
+            <input type="text" class="form-control" id="codigoVentaInput" placeholder="Código Venta"
+                name="codigo_venta" required>
+            <label for="codigoVentaInput">Código Venta</label>
+        </div>
+
+        <div class="form-floating mt-3 mb-3">
+            <input type="text" class="form-control" id="valorVentaInput" placeholder="Valor Venta"
+                name="valor_venta" required>
+            <label for="valorVentaInput">Valor Venta</label>
+        </div>
+
+        <div class="form-floating mt-3 mb-3">
+            <input type="text" class="form-control" id="ivaVentaInput" placeholder="IVA Venta"
+                name="ivaventa" required>
+            <label for="ivaVentaInput">IVA Venta</label>
+        </div>
+
+        <div class="form-floating mt-3 mb-3">
+            <input type="text" class="form-control" id="totalVentaInput" placeholder="Total Venta"
+                name="total_venta" required>
+            <label for="totalVentaInput">Total Venta</label>
+        </div>
+
+        <button class="btn btn-outline-success btn-block" type="submit" style="border-radius: 45px;">
+>>>>>>> 8d231af (archivos con front)
             Agregar Venta
         </button>
     </form>

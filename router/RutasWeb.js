@@ -8,7 +8,11 @@ const router =express.Router();
 router.get("/", (req, res) => {
     res.render('index', {titulo: "Ingreso usuario"});    
 })
+<<<<<<< HEAD
 
+=======
+/*
+>>>>>>> 8d231af (archivos con front)
 router.get("/productos", (req, res) => {
     res.render("productos", {titulo: "Lista de Productos"});
 });
@@ -24,7 +28,11 @@ router.get("/reportes", (req, res) => {
 router.get("/consolidacion", (req, res) => {
     res.render("consolidacion", {titulo: "Consolidación de sedes"});
 });
+<<<<<<< HEAD
 
+=======
+*/
+>>>>>>> 8d231af (archivos con front)
 /*router.get("/usuarios", (req, res) => {
     res.render("usuarios", {titulo: "página dinámica de usuarios"});
 });*/
@@ -32,5 +40,9 @@ router.get("/consolidacion", (req, res) => {
 // Para ordenar las rutas se centralizan en esta carpeta y no se llaman desde app.json
 router.use('/clientes',require('./clientes'));
 router.use('/productos',require('./productosR'));
+<<<<<<< HEAD
+=======
+router.use('/ventas',require('./ventasR'));
+>>>>>>> 8d231af (archivos con front)
 
 module.exports = router;

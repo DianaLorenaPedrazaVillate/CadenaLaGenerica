@@ -1,6 +1,7 @@
 <%- include('./template/cabecera', {titulow: "Ventas" }); %>
 
     <br><br>
+<<<<<<< HEAD
     <h1 align="center" class="text-muted fw-bold fst-italic">
         <%= titulo%>
     </h1>
@@ -18,11 +19,30 @@
                     <th scope="col">valor_venta</th>
                     <th scope="col">iva_venta</th>
                     <th scope="col">total_venta</th>
+=======
+    <h1 align="center" class="text-muted">Ventas</h1>
+    <br>
+    <div class="container">
+        <a class="btn btn-outline-success btn-block" href="/ventas/crearVenta">Generar Venta</a>
+        <br><br>
+        <table class="table table-hover shadow" style="border-collapse: separate;">
+
+            <thead>
+                <tr align="center" class="table-active">
+                    
+                    <th scope="col">Cedula cliente</th>
+                    <th scope="col">Código Venta</th>
+                    <th scope="col">Detalle Venta</th>
+                    <th scope="col">IVA Venta</th>
+                    <th scope="col">Total Venta</th>
+                    <th scope="col">Valor Venta</th>
+>>>>>>> 8d231af (archivos con front)
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
 
             <tbody>
+<<<<<<< HEAD
                 <!-- <% /* aqui se debe direccionar a la BD de mongo para iterar y traer los datos de los productos. Se deja
                     el ejemplo de clientes.ejs para ser modificado cuando veamos la conexion a Mongo*/%>
                     <tr>
@@ -75,11 +95,49 @@
                             <% }) %>
                                 <% } %>
 
+=======
+                                
+                <% if (arrayDBloc.length> 0) { %>
+                    <% arrayDBloc.forEach(venta=> {%>
+                        <tr align="center">
+                            
+                            <td>
+                                <%= venta.cedula_cliente %>
+                            </td>
+                            <td>
+                                <%= venta.codigo_venta %>
+                            </td>
+                            <td>
+                                <%= venta.detalle_venta %>
+                            </td>
+                            <td>
+                                <%= venta.ivaventa %>
+                            </td>
+                            <td>
+                                <%= venta.total_venta %>
+                            </td>
+                            <td>
+                                <%= venta.valor_venta %>
+                            </td>
+                            <td>
+                                <button type="button" title="Editar / Eliminar" class="btn btn-outline-warning"><a href="/ventas/<%= venta.id %>" style="color: #fa9847;"><i class="fas fa-user-edit"></i></a></button>
+
+                            </td>
+                            
+                        </tr>
+
+                        <% }) %>
+                            <% } %>
+>>>>>>> 8d231af (archivos con front)
             </tbody>
         </table>
     </div>
 
+<<<<<<< HEAD
 
 
+=======
+    
+>>>>>>> 8d231af (archivos con front)
 
     <%- include('./template/footer'); %>

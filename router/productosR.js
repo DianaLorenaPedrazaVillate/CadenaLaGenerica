@@ -6,9 +6,14 @@ const Producto = require('../models/productoM');
 router.get('/', async (req, res) => {
     try {
         const arrayDB = await Producto.find();
+<<<<<<< HEAD
         console.log(arrayDB)
         res.render('productos',{
             arrayProductos: arrayDB
+=======
+        res.render('productos',{
+            arrayDBloc: arrayDB
+>>>>>>> 8d231af (archivos con front)
         })
 
     }
@@ -51,10 +56,57 @@ router.get('/:id', async (req, res)=>{
     } catch (error) {
         res.render('detalleProducto',{
             error : true,
+<<<<<<< HEAD
             mensaje : 'No se encuentra el Producto'
     }
     )}
 })
 
+=======
+            mensaje : 'No se encuentra el Producto'})
+    }
+})
+//ruta para editar
+router.put('/:id', async (req, res) => {
+    const id = req.params.id
+    const body = req.body
+    try{
+        const productoDB = await Producto.findByIdAndUpdate(
+            id, body, {useFindAndModify: false})
+            console.log(productoDB)
+            res.json({
+                estado : true,
+                mensaje : 'Producto editado'
+            })
+    }catch(error){
+        console.log(error)
+        res.json({
+            estado : true,
+            mensaje : 'Fallo al editar'
+        })
+    }
+})
+
+//Aqui vamos a crear el borrado de los clientes  con delete
+router.delete('/:id', async(req, res)=>{
+    const id = req.params.id
+    try {
+        const productoDB = await Producto.findByIdAndDelete({_id: id})
+        if (productoDB) {
+            res.json({
+                estado: true,
+                mensaje : 'Eliminado !!'
+            })
+        } else {
+            res.json({
+                estado: false,
+                mensaje : 'No se pudo eliminar !!'
+            })
+        }
+    } catch (error) {
+        console.log(error)
+    }
+ })
+>>>>>>> 8d231af (archivos con front)
 
 module.exports = router;

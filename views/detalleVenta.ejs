@@ -1,0 +1,123 @@
+<%- include('./template/cabecera', {titulow:'Actualizar Venta'}); %>
+
+<br>
+<h1 align="center">Editar Venta</h1>
+<br>
+
+    <div class="container" style="width: 600px;">
+        <% if (error) { %>
+            <p>
+                <%= mensaje %>
+            </p>
+            <a href="/ventas" class="btn btn-dark btn-block">Volver a ventas</a>
+            <% } %>
+
+                <% if (!error) { %>
+                    <form id="formularioEditar" data-id="<%= venta.id  %>" >
+                        <div class="form-floating mt-3 mb-3">
+                            <input type="text" class="form-control" id="cedulaInput" placeholder="Cedula Cliente"
+                                name="cedula" value="<%= venta.cedula_cliente %> " required>
+                            <label for="cedulaInput">Cedula Cliente</label>
+                        </div>
+                
+                        <div class="form-floating mt-3 mb-3">
+                            <input type="text" class="form-control" id="codigoInput" placeholder="Código Venta"
+                                name="codigo" value="<%= venta.codigo_venta %> " required>
+                            <label for="codigoInput">Código Venta</label>
+                        </div>
+                
+                        <div class="form-floating mt-3 mb-3">
+                            <input type="text" class="form-control" id="ventaInput" placeholder="Valor Venta"
+                                name="venta" value="<%= venta.valor_venta %> " required>
+                            <label for="ventaInput">Valor Venta</label>
+                        </div>
+                
+                        <div class="form-floating mt-3 mb-3">
+                            <input type="text" class="form-control" id="ivaInput" placeholder="IVA Venta"
+                                name="iva" value="<%= venta.ivaventa %> " required>
+                            <label for="ivaInput">IVA Venta</label>
+                        </div>
+                
+                        <div class="form-floating mt-3 mb-3">
+                            <input type="text" class="form-control" id="totalInput" placeholder="Total Venta"
+                                name="total" value="<%= venta.total_venta %> " required>
+                            <label for="totalInput">Total Venta</label>
+                        </div>
+                        <!-- <input type="text" class="form-control my-2" name="cedula" value="<%= venta.cedula_cliente %> " id="cedulaInput">
+                        <input type="text" class="form-control my-2" name="codigo" value="<%= venta.codigo_venta %> " id="codigoInput">
+                        <input type="text" class="form-control my-2" name="iva" value="<%= venta.ivaventa %> " id="ivaInput">
+                        <input type="text" class="form-control my-2" name="venta" value="<%= venta.valor_venta %> " id="ventaInput">
+                        <input type="text" class="form-control my-2" name="total" value="<%= venta.total_venta %> " id="totalInput">                      
+                        <button type="submit" class="btn btn-warning btn-block">
+                            Actualizar venta
+                        </button>                                       -->
+                        <div>
+                            <button type="submit" title="Actualizar Venta" class="btn btn-outline-success btn-block">Actualizar <i class="fas fa-user-check"></i></button>
+                        </div>
+                    </form>
+                    <hr style="color: red; height:3px;">
+                    <div align="center  ">
+                        <a href="/ventas" class="btn btn-dark btn-block">Volver a Ventas</a>
+                        <button type="submit" title="Eliminar Cliente" class="btn btn-outline-danger btn-block" id="btnEliminar" data-id="<%= venta.id  %>">Eliminar <i class="fas fa-trash"></i></button>
+                    </div>
+
+                    <% } %>
+    </div>
+
+    <%- include('./template/footer'); %>
+
+    <script>
+        //Aqui se captrua lo que trae el botón eliminar a traves del id="btnEliminar"
+        const btnEliminar = document.querySelector('#btnEliminar')
+        btnEliminar.addEventListener('click', async () => {
+            console.log('Haz dado un click')
+            const id = btnEliminar.dataset.id //Aquí estamos capturando el parametro que estamos pasando a treaves de un atributo en el botón eliminar
+            console.log('id', id)//Aquí nos pinta en consola de navegador el valor del id
+            try {
+                const data = await fetch(`/ventas/${id}`, {
+                    method: 'delete'
+                })
+                const res = await data.json()
+                //console.log(res)
+                if (res.estado) {
+                    window.location.href = '/ventas'
+                } else {
+                    console.log(res)
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        })
+        //  Código de Editar   
+        const formularioEditar = document.querySelector('#formularioEditar')            
+        formularioEditar.addEventListener('submit', async(e)=>{
+            e.preventDefault()
+            console.log('ya dio submit')
+            const cedula_cliente = formularioEditar.elements['cedula'].value
+            const codigo_venta = document.querySelector('#codigoInput').value
+            const ivaventa = document.querySelector('#ivaInput').value
+            const valor_venta = document.querySelector('#ventaInput').value
+            const total_venta = document.querySelector('#totalInput').value
+            const id =formularioEditar.dataset.id
+            
+            //console.log("Aqui vamos bien")
+            try {
+                const data = await fetch(`/ventas/${id}`,{
+                    method :'put',
+                    headers : {
+                        'Content-Type' : 'application/json'
+                    },
+                    body : JSON.stringify({cedula_cliente, codigo_venta, ivaventa, valor_venta, total_venta})
+                })
+                const res = await data.json()
+                if (res.estado) {
+                    window.location.href = '/ventas'
+                } else {
+                    console.log(res)
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        })
+    </script>
+    

@@ -1,12 +1,22 @@
+<<<<<<< HEAD
 <%- include('./template/cabecera', {titulow:'Detalle Cliente'}); %>
 
     <h1 align="center">Detalle Producto</h1>
 
     <div class="container">
+=======
+<%- include('./template/cabecera', {titulow:'Actualizar Producto'}); %>
+
+    <br>
+    <h1 align="center" class="text-warning">Editar Producto</h1>
+    <br>
+    <div class="container" style="width: 600px;">
+>>>>>>> 8d231af (archivos con front)
         <% if (error) { %>
             <p>
                 <%= mensaje %>
             </p>
+<<<<<<< HEAD
             <a href="/productos" class="btn btn-dark btn-block">Volver a prodcutos</a>
             <% } %>
 
@@ -56,4 +66,111 @@
                     <% } %>
     </div>
 
+=======
+            <a href="/productos" class="btn btn-dark btn-block">Volver a productos</a>
+            <% } %>
+
+                <% if (!error) { %>
+                    <form id="formularioEditar" data-id="<%= producto.id  %>" >
+                        <div class="form-floating mt-3 mb-3">
+                            <input type="text" class="form-control" id="codigoInput" placeholder="Codigo Producto"
+                                name="codigo" value="<%= producto.codigo_producto %> " required>
+                            <label for="codigoInput">Codigo Producto</label>
+                        </div>
+                        <div class="form-floating mt-3 mb-3">
+                            <input type="text" class="form-control" id="nombreInput" placeholder="Nombre Producto"
+                                name="nombre" value="<%= producto.nombre_producto %> " required>
+                            <label for="nombreInput">Nombre Producto</label>
+                        </div>
+                        <div class="form-floating mt-3 mb-3">
+                            <input type="text" class="form-control" id="nitInput" placeholder="Nit Proveedor"
+                                name="nit" value="<%= producto.nitproveedor %> " required>
+                            <label for="nitInput">Nit Proveedor</label>
+                        </div>
+                        <div class="form-floating mt-3 mb-3">
+                            <input type="text" class="form-control" id="compraInput" placeholder="Precio Compra"
+                                name="compra" value="<%= producto.precio_compra %> " required>
+                            <label for="compraInput">Precio Compra</label>
+                        </div>
+                        <div class="form-floating mt-3 mb-3">
+                            <input type="text" class="form-control" id="ivaInput" placeholder="Iva Compra"
+                                name="iva" value="<%= producto.ivacompra %> " required>
+                            <label for="ivaInput">Iva Compra</label>
+                        </div>
+                        <div class="form-floating mt-3 mb-3">
+                            <input type="text" class="form-control" id="ventaInput" placeholder="Precio Venta"
+                                name="venta" value="<%= producto.precio_venta %> " required>
+                            <label for="ventaInput">Precio Venta</label>
+                        </div>
+                        <div>
+                            <button type="submit" title="Actualizar Producto" class="btn btn-outline-success btn-block">Actualizar <i class="fas fa-user-check"></i></button>
+                        </div>
+                    </form>
+                    <hr style="color: red; height:3px;">
+                    <div align="center">
+                        <a href="/productos" class="btn btn-dark btn-block">Volver a Productos</a>
+                        <button type="submit" title="Eliminar Cliente" class="btn btn-outline-danger btn-block" id="btnEliminar" data-id="<%= producto.id  %>">Eliminar <i class="fas fa-trash"></i></button>
+                        <!-- <button class="btn btn-danger btn-block" id="btnEliminar" data-id="<%= producto.id  %>">Eliminar</button> -->
+                    </div>
+                    <% } %>
+    </div>
+
+    <script>
+        
+            //Aqui se captrua lo que trae el botón eliminar a traves del id="btnEliminar"
+            const btnEliminar = document.querySelector('#btnEliminar')
+            btnEliminar.addEventListener('click', async () => {
+                console.log('Haz dado un click')
+                const id = btnEliminar.dataset.id //Aquí estamos capturando el parametro que estamos pasando a treaves de un atributo en el botón eliminar
+                console.log('id', id)//Aquí nos pinta en consola de navegador el valor del id
+                try {
+                    const data = await fetch(`/productos/${id}`, {
+                        method: 'delete'
+                    })
+                    const res = await data.json()
+                    //console.log(res)
+                    if (res.estado) {
+                        window.location.href = '/productos'
+                    } else {
+                        console.log(res)
+                    }
+                } catch (error) {
+                    console.log(error)
+                }
+            })
+    
+        //  Código de Editar   
+        const formularioEditar = document.querySelector('#formularioEditar')            
+        formularioEditar.addEventListener('submit', async(e)=>{
+            e.preventDefault()
+            console.log('ya dio submit')
+            const codigo_producto = document.querySelector('#codigoInput').value
+            const nombre_producto = document.querySelector('#nombreInput').value
+            const nitproveedor = document.querySelector('#nitInput').value
+            const precio_compra = document.querySelector('#compraInput').value
+            const ivacompra = document.querySelector('#ivaInput').value
+            const precio_venta = document.querySelector('#ventaInput').value
+            const id =formularioEditar.dataset.id
+            //console.log(cedula,direccion,correo,telefono,nombre,id)
+            //console.log("Aqui vamos bien")
+            try {
+                const data = await fetch(`/productos/${id}`,{
+                    method :'put',
+                    headers : {
+                        'Content-Type' : 'application/json'
+                    },
+                    body : JSON.stringify({codigo_producto, nombre_producto, nitproveedor, precio_compra, ivacompra, precio_venta})
+                })
+                const res = await data.json()
+                if (res.estado) {
+                    window.location.href = '/productos'
+                } else {
+                    console.log(res)
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        })
+    </script>
+>>>>>>> 8d231af (archivos con front)
     <%- include('./template/footer'); %>

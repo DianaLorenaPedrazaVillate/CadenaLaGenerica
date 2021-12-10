@@ -1,5 +1,6 @@
 <%- include('./template/cabecera', {titulow: "Crear Cliente"}); %>
 
+<<<<<<< HEAD
     <h1 align="center">Crear Cliente</h1>
     <div class="container">
         <form action="/clientes" method="post">
@@ -9,6 +10,40 @@
             <input type="text" placeholder="email Cliente" class="form-control my-2" name="email_cliente" required>
             <input type="text" placeholder="Celular Cliente" class="form-control my-2" name="telefono_cliente" required>
             <button class="btn btn-success btn-block" type="submit">
+=======
+<div class="text-success mt-4 mb-4" style="font-family: new times roman; font-variant: small-caps;">
+    <h1 align="center">Crear Cliente</h1>
+</div>
+
+    <div class="container form-group" style="max-width: 40rem;">
+        <form action="/clientes" method="post">
+            <div class="form-floating mt-3 mb-3">
+                <input type="text" class="form-control" id="cedulaInput" placeholder="Cedula Cliente"
+                    name="cedula_cliente" required>
+                <label for="cedulaInput">Cedula Cliente</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="nombreInput" placeholder="Nombre Cliente"
+                    name="nombre_cliente" required>
+                <label for="nombreInput">Nombre Cliente</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="direccionInput" placeholder="Direccion Cliente"
+                    name="ndireccion_cliente" required>
+                <label for="direccionInput">Direccion Cliente</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="emailInput" placeholder="email Cliente"
+                    name="email_cliente" required>
+                <label for="emailInput">Correo Cliente</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="celInput" placeholder="Celular Cliente"
+                    name="telefono_cliente" required>
+                <label for="celInput">Celular Cliente</label>
+            </div>
+            <button class="btn btn-outline-success btn-block" type="submit" style="border-radius: 45px;">
+>>>>>>> 8d231af (archivos con front)
                 Agregar Cliente
             </button>
         </form>
