@@ -1,25 +1,6 @@
 <%- include('./template/cabecera', {titulow: "Ventas" }); %>
 
     <br><br>
-<<<<<<< HEAD
-    <h1 align="center" class="text-muted fw-bold fst-italic">
-        <%= titulo%>
-    </h1>
-    <br><br>
-    <div class="container">
-        <a class="btn btn-success btn-block my-4" href="/ventas/crearVenta">Crear Venta</a>
-        <br><br>
-        <table class="table">
-
-            <thead>
-                <tr>
-                    <th scope="col">cedula_cliente</th>
-                    <th scope="col">codigo_venta</th>
-                    <th scope="col">detalle_venta</th>
-                    <th scope="col">valor_venta</th>
-                    <th scope="col">iva_venta</th>
-                    <th scope="col">total_venta</th>
-=======
     <h1 align="center" class="text-muted">Ventas</h1>
     <br>
     <div class="container">
@@ -36,66 +17,11 @@
                     <th scope="col">IVA Venta</th>
                     <th scope="col">Total Venta</th>
                     <th scope="col">Valor Venta</th>
->>>>>>> 8d231af (archivos con front)
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
 
             <tbody>
-<<<<<<< HEAD
-                <!-- <% /* aqui se debe direccionar a la BD de mongo para iterar y traer los datos de los productos. Se deja
-                    el ejemplo de clientes.ejs para ser modificado cuando veamos la conexion a Mongo*/%>
-                    <tr>
-                        <th scope="row">
-                            <%= 123456 %>
-                                <% /* se debe direccionar al dato codigo_producto como el ejemplo clientes*/ %>
-                        </th>
-                        <td>
-                            <%= 1 %>
-                        </td>
-                        <td>@mdo
-                            <%= "link para ver detalle" %>
-                        </td>
-                        <td>
-                            <%= 10000 %>
-                        </td>
-                        <td>
-                            <%= 1900 %>
-                        </td>
-                        <td>
-                            <%= 11900 %>
-                        </td>
-                        <td>@mdo</td>
-                    </tr> -->
-                    
-                    <% if (arrayVentas.length> 0) { %>
-                        <% arrayVentas.forEach(venta=> {%>
-                            <tr>
-                                <th scope="row">
-                                    <%= venta.id %>
-                                </th>
-                                <td>
-                                    <%= venta.codigo_venta %>
-                                </td>
-                                <td>
-                                    <%= venta.detalle_venta %>
-                                </td>
-                                <td>
-                                    <%= venta.valor_venta %>
-                                </td>
-                                <td>
-                                    <%= venta.iva_venta %>
-                                </td>
-                                <td>
-                                    <%= venta.total_venta %>
-                                </td>
-
-                            </tr>
-
-                            <% }) %>
-                                <% } %>
-
-=======
                                 
                 <% if (arrayDBloc.length> 0) { %>
                     <% arrayDBloc.forEach(venta=> {%>
@@ -128,16 +54,10 @@
 
                         <% }) %>
                             <% } %>
->>>>>>> 8d231af (archivos con front)
             </tbody>
         </table>
     </div>
 
-<<<<<<< HEAD
-
-
-=======
     
->>>>>>> 8d231af (archivos con front)
 
     <%- include('./template/footer'); %>

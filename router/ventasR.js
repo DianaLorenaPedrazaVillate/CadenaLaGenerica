@@ -51,13 +51,6 @@ router.get('/:id', async (req, res)=>{
     } catch (error) {
         res.render('detalleVenta',{
             error : true,
-<<<<<<< HEAD
-            mensaje : 'No se encuentra la Venta'
-    }
-    )}
-})
-
-=======
             mensaje : 'No se encuentra la Venta'})
     }
 })
@@ -103,6 +96,5 @@ router.delete('/:id', async(req, res)=>{
         console.log(error)
     }
  })
->>>>>>> 8d231af (archivos con front)
 
 module.exports = router;

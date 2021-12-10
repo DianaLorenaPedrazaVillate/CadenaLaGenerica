@@ -1,72 +1,13 @@
-<<<<<<< HEAD
-<%- include('./template/cabecera', {titulow:'Detalle Cliente'}); %>
-
-    <h1 align="center">Detalle Producto</h1>
-
-    <div class="container">
-=======
 <%- include('./template/cabecera', {titulow:'Actualizar Producto'}); %>
 
     <br>
     <h1 align="center" class="text-warning">Editar Producto</h1>
     <br>
     <div class="container" style="width: 600px;">
->>>>>>> 8d231af (archivos con front)
         <% if (error) { %>
             <p>
                 <%= mensaje %>
             </p>
-<<<<<<< HEAD
-            <a href="/productos" class="btn btn-dark btn-block">Volver a prodcutos</a>
-            <% } %>
-
-                <% if (!error) { %>
-
-
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#Id</th>
-                                <th scope="col">Código del Producto</th>
-                                <th scope="col">Producto</th>
-                                <th scope="col">NIT Proveedor</th>
-                                <th scope="col">Precio de Compra</th>
-                                <th scope="col">IVA del producto</th>
-                                <th scope="col">Precio de Venta</th>
-                                <th scope="col">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">
-                                    <%= producto.id %>
-                                </th>
-                                <td>
-                                    <%= producto.codigo_producto %>
-                                </td>
-                                <td>
-                                    <%= producto.nombre_producto %>
-                                </td>
-                                <td>
-                                    <%= producto.nitproveedor %>
-                                </td>
-                                <td>
-                                    <%= producto.precio_compra %>
-                                </td>
-                                <td>
-                                    <%= producto.ivacompra %>
-                                </td>
-                                <td>
-                                    <%= producto.precio_venta %>
-                                </td>
-                                <td>@mdo</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <% } %>
-    </div>
-
-=======
             <a href="/productos" class="btn btn-dark btn-block">Volver a productos</a>
             <% } %>
 
@@ -172,5 +113,4 @@
             }
         })
     </script>
->>>>>>> 8d231af (archivos con front)
     <%- include('./template/footer'); %>

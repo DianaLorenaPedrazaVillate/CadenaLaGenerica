@@ -4,21 +4,12 @@ const Schema = mongoose.Schema; // Se importa la libreria eSchema del modulo mon
 
 // aqui va el esquema de datos en la base de datos
 const ventaSchema = new Schema({
-<<<<<<< HEAD
-    cedula_cliente : Integer,
-    codigo_venta : Integer,
-
-    detalle_venta : [{
-        cantidad_producto : Integer,
-        codigo_producto : Integer,
-=======
     cedula_cliente : Number,
     codigo_venta : Number, //
 
     detalle_venta : [{
         cantidad_producto : Number,
         codigo_producto : Number,
->>>>>>> 8d231af (archivos con front)
         valor_total : Number,
         valor_venta : Number,
         valor_iva : Number

@@ -6,14 +6,8 @@ const Producto = require('../models/productoM');
 router.get('/', async (req, res) => {
     try {
         const arrayDB = await Producto.find();
-<<<<<<< HEAD
-        console.log(arrayDB)
-        res.render('productos',{
-            arrayProductos: arrayDB
-=======
         res.render('productos',{
             arrayDBloc: arrayDB
->>>>>>> 8d231af (archivos con front)
         })
 
     }
@@ -56,13 +50,6 @@ router.get('/:id', async (req, res)=>{
     } catch (error) {
         res.render('detalleProducto',{
             error : true,
-<<<<<<< HEAD
-            mensaje : 'No se encuentra el Producto'
-    }
-    )}
-})
-
-=======
             mensaje : 'No se encuentra el Producto'})
     }
 })
@@ -107,6 +94,5 @@ router.delete('/:id', async(req, res)=>{
         console.log(error)
     }
  })
->>>>>>> 8d231af (archivos con front)
 
 module.exports = router;
