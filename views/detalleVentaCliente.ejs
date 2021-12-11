@@ -1,0 +1,61 @@
+<%- include('./template/cabecera', {titulow: "Ventas" }); %>
+
+    <br>
+    <h1 align="center" class="text-primary">Ventas de cliente</h1>
+    <br>
+
+    <div class="container">
+        
+        <table class="table table-hover shadow" style="border-collapse: separate;">
+
+            <thead>
+                <tr align="center" class="table-active">
+                    
+                    <th scope="col">cedula_cliente</th>
+                    <th scope="col">codigo_venta</th>
+                    <th scope="col">detalle_venta</th>
+                    <th scope="col">iva_venta</th>
+                    <th scope="col">total_venta</th>
+                    <th scope="col">valor_venta</th>
+                    
+                </tr>
+            </thead>
+
+            <tbody>
+                                
+                <% if (arrayDBloc.length> 0) { %>
+                    <% arrayDBloc.forEach(VentaC=> {%>
+                        <tr align="center">
+                            
+                            <td>
+                                <%= VentaC.cedula_cliente %>
+                            </td>
+                            <td>
+                                <%= VentaC.codigo_venta %>
+                            </td>
+                            <td>
+                                <%= VentaC.detalle_venta %>
+                            </td>
+                            <td>
+                                <%= VentaC.ivaventa %>
+                            </td>
+                            <td>
+                                <%= VentaC.total_venta %>
+                            </td>
+                            <td>
+                                <%= VentaC.valor_venta %>
+                            </td>
+                            
+                            
+                        </tr>
+
+                        <% }) %>
+                            <% }else{ %><tr><th collspan="5">Sin ventas registradas</th></tr></tbody></table><%} %>
+            </tbody>
+        </table>
+        <a href="/reportes/reporteVentas" class="btn btn-success btn-sm">Volver a Reportes</a>
+    </div>
+
+    
+
+    <%- include('./template/footer'); %>

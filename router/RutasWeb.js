@@ -33,5 +33,6 @@ router.get("/consolidacion", (req, res) => {
 router.use('/clientes',require('./clientes'));
 router.use('/productos',require('./productosR'));
 router.use('/ventas',require('./ventasR'));
+router.use('/reportes',require('./reportesR'));
 
 module.exports = router;

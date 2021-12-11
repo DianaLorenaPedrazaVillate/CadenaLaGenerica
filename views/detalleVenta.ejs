@@ -1,7 +1,7 @@
 <%- include('./template/cabecera', {titulow:'Actualizar Venta'}); %>
 
 <br>
-<h1 align="center">Editar Venta</h1>
+<h1 align="center" class="text-warning">Editar Venta</h1>
 <br>
 
     <div class="container" style="width: 600px;">
@@ -58,7 +58,7 @@
                     <hr style="color: red; height:3px;">
                     <div align="center  ">
                         <a href="/ventas" class="btn btn-dark btn-block">Volver a Ventas</a>
-                        <button type="submit" title="Eliminar Cliente" class="btn btn-outline-danger btn-block" id="btnEliminar" data-id="<%= venta.id  %>">Eliminar <i class="fas fa-trash"></i></button>
+                        <button type="submit" title="Eliminar Venta" class="btn btn-outline-danger btn-block" id="btnEliminar" data-id="<%= venta.id  %>">Eliminar <i class="fas fa-trash"></i></button>
                     </div>
 
                     <% } %>

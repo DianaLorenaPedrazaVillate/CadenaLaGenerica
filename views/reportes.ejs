@@ -1,5 +1,24 @@
 <%- include('./template/cabecera', {titulow: "Reportes" }); %>
 
-    reportes
+<br><br>
+<h1 align="center" class="text-muted">Reportes</h1>
 
-<%- include('./template/footer'); %>
+    <div class="card text-center">
+        <table class="table" style="width : 80%;">
+            <th style="width : 80%;">
+                <img style="width: 50%; object-fit: contain;" id="img" class="style-scope yt-img-shadow" alt="" src="https://th.bing.com/th/id/OIP.HaLbu3yxFzTFBcbPa6tJ-gHaHa?pid=ImgDet&w=960&h=960&rs=1">
+            </th>
+            <th class="card text-center shadow" style="margin-top: 50%; padding : 30px; border-color : #7ac9f7;">
+                <div>                
+                    <a href="/reportes/reporteClientes" class="btn btn-outline-success">Listado de clientes</a>
+                </div>    
+                <br>
+                <div>                  
+                    <a href="reportes/reporteVentas" class="btn btn-outline-warning">Ventas por Cliente</a>
+                </div>  
+            </th>
+        </table>
+
+    </div>    
+
+    <%- include('./template/footer'); %>
