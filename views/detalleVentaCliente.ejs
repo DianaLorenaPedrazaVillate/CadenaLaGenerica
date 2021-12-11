@@ -11,12 +11,12 @@
             <thead>
                 <tr align="center" class="table-active">
                     
-                    <th scope="col">cedula_cliente</th>
-                    <th scope="col">codigo_venta</th>
-                    <th scope="col">detalle_venta</th>
-                    <th scope="col">iva_venta</th>
-                    <th scope="col">total_venta</th>
-                    <th scope="col">valor_venta</th>
+                    <th scope="col">Cedula Cliente</th>
+                    <th scope="col">Codigo Venta</th>
+                    <th scope="col">Detalle Venta</th>
+                    <th scope="col">IVA Venta</th>
+                    <th scope="col">Total Venta</th>
+                    <th scope="col">Valor Venta</th>
                     
                 </tr>
             </thead>
@@ -34,6 +34,7 @@
                                 <%= VentaC.codigo_venta %>
                             </td>
                             <td>
+                                <button type="button" title="Detalle Venta" class="btn btn-outline-primary"><a href="/reportes/Venta/<%= VentaC.detalle_venta%>" style="color: #12bef3;"><i class="fas fa-eye"></i></a></button>
                                 <%= VentaC.detalle_venta %>
                             </td>
                             <td>

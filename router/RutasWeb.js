@@ -5,9 +5,9 @@ const router =express.Router();
 
 // Esta seccion es cuando se trabaja con paginas dinamicas y se utiliza la variable Titulo para hacer el cambio dinamico
 
-router.get("/", (req, res) => {
+/* router.get("/", (req, res) => {
     res.render('index', {titulo: "Ingreso usuario"});    
-})
+}) */
 /*
 router.get("/productos", (req, res) => {
     res.render("productos", {titulo: "Lista de Productos"});
@@ -34,5 +34,6 @@ router.use('/clientes',require('./clientes'));
 router.use('/productos',require('./productosR'));
 router.use('/ventas',require('./ventasR'));
 router.use('/reportes',require('./reportesR'));
+router.use('/login',require('./loginR'));
 
 module.exports = router;
